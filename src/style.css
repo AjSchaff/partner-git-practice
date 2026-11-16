@@ -1,0 +1,52 @@
+:root {
+  color-scheme: light;
+  font-family: "Avenir Next", "Segoe UI", sans-serif;
+  line-height: 1.5;
+  --ink: #12202e;
+  --muted: #4a5d70;
+  --paper: #f4f7fb;
+  --accent: #0b6e4f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, #d7ebe3 0%, transparent 40%),
+    linear-gradient(160deg, #eef3f8, var(--paper));
+  color: var(--ink);
+}
+
+.page {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+h1 {
+  margin: 0 0 1rem;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.03em;
+}
+
+.lede {
+  margin: 0 0 1.5rem;
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+.hint {
+  margin: 0;
+  padding: 1rem 1.1rem;
+  border-left: 4px solid var(--accent);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.95em;
+}
