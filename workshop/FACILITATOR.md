@@ -16,10 +16,12 @@ gh repo create partner-git-practice --public --source=. --remote=origin --push
 
 Invite every partner as a **collaborator** (or add them to the org team) so they can push branches and open PRs.
 
-**Fill in after publish** (also paste into PREWORK / FOLLOW_ALONG / CHEAT_SHEET):
+**Published values** (also in PREWORK / FOLLOW_ALONG / CHEAT_SHEET):
 
-- Repo URL: `https://github.com/<ORG_OR_USER>/partner-git-practice`
-- Clone URL: `git@github.com:<ORG_OR_USER>/partner-git-practice.git` (or HTTPS)
+- Repo URL: `https://github.com/AjSchaff/partner-git-practice`
+- Clone URL: `https://github.com/AjSchaff/partner-git-practice.git`
+- Live site: `https://partner-git-practice.vercel.app`
+- Demo PR: `https://github.com/AjSchaff/partner-git-practice/pull/1`
 
 ## 2. Connect Vercel (auto-deploy on `main`)
 

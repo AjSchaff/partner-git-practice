@@ -22,7 +22,7 @@ cd /tmp/partner-git-practice-dryrun
 
 # After the repo is on GitHub, use clone. Until then, copy the local project:
 # cp -R /path/to/partner-git-practice .
-# Or: git clone REPLACE_ME_CLONE_URL
+# Or: git clone https://github.com/AjSchaff/partner-git-practice.git
 
 cd partner-git-practice
 npm install

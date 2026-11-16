@@ -11,7 +11,7 @@ Please finish this **before** we meet. The live hour assumes these tools already
 1. Create or sign in at [github.com](https://github.com).
 2. Use the email you use for work.
 3. Accept the invite to the practice repo when you receive it:
-   - **Repo:** `REPLACE_ME_REPO_URL`
+   - **Repo:** `https://github.com/AjSchaff/partner-git-practice`
 
 ---
 
@@ -102,7 +102,7 @@ If that fails, try whatever command the install docs give you, then message the 
 2. Approve access to GitHub if asked.
 3. You do **not** need to create a project yourself — the facilitator already linked the practice repo.
 4. Bookmark the live site (filled in by facilitator):
-   - **Live site:** `REPLACE_ME_VERCEL_URL`
+   - **Live site:** `https://partner-git-practice.vercel.app`
 
 ---
 

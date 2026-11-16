@@ -4,8 +4,8 @@ Print or keep this open. Copy-paste is encouraged.
 
 **Links (facilitator fills in):**
 
-- Repo: `REPLACE_ME_REPO_URL`
-- Live site: `REPLACE_ME_VERCEL_URL`
+- Repo: `https://github.com/AjSchaff/partner-git-practice`
+- Live site: `https://partner-git-practice.vercel.app`
 - What is a PR?: https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
 
 ---
@@ -43,7 +43,7 @@ Stop a running dev server: `Ctrl + C`
 ## Git commands we use
 
 ```bash
-git clone REPLACE_ME_CLONE_URL
+git clone https://github.com/AjSchaff/partner-git-practice.git
 git pull
 git checkout -b YOURNAME-homepage
 git branch

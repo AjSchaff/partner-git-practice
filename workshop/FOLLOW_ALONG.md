@@ -4,9 +4,9 @@ Facilitator leads. You copy-paste. It is OK to be slow — raise your hand inste
 
 **Replace these before class (facilitator):**
 
-- Repo URL: `REPLACE_ME_REPO_URL`
-- Clone command: `git clone REPLACE_ME_CLONE_URL`
-- Live site: `REPLACE_ME_VERCEL_URL`
+- Repo URL: `https://github.com/AjSchaff/partner-git-practice`
+- Clone command: `git clone https://github.com/AjSchaff/partner-git-practice.git`
+- Live site: `https://partner-git-practice.vercel.app`
 
 ---
 
@@ -54,7 +54,7 @@ You should now be inside your `Dev` folder.
 ### Clone the practice repo
 
 ```bash
-git clone REPLACE_ME_CLONE_URL
+git clone https://github.com/AjSchaff/partner-git-practice.git
 ```
 
 ```bash
@@ -188,7 +188,7 @@ Sign in with GitHub in the browser if asked.
 
 ### Open a pull request
 
-1. Open `REPLACE_ME_REPO_URL` in your browser.
+1. Open `https://github.com/AjSchaff/partner-git-practice` in your browser.
 2. GitHub usually shows a banner: **Compare & pull request** — click it.
 3. Title can stay as-is or match your commit message.
 4. Click **Create pull request**.
@@ -217,7 +217,7 @@ git checkout main
 git pull
 ```
 
-2. Open the live site: `REPLACE_ME_VERCEL_URL`
+2. Open the live site: `https://partner-git-practice.vercel.app`
 3. Refresh until you see the updated headline (Vercel may take ~30–60 seconds).
 4. Facilitator shows the Vercel dashboard → Deployments = “website updated from GitHub”.
 
