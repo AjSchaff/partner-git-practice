@@ -1,0 +1,202 @@
+/* ==========================================================================
+   Catch the unicorn: game styles
+   Uses the colour palette defined in style.css (--ink, --pink, --rainbow...).
+   ========================================================================== */
+
+.squash {
+  margin-top: 2.5rem;
+}
+
+.squash h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
+}
+
+.squash-sub {
+  margin: 0 0 1rem;
+  color: var(--muted);
+}
+
+/* Score / Time / Best row, with the Start button pushed to the right. */
+.squash-hud {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.25rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.squash-hud strong {
+  color: var(--ink);
+  font-variant-numeric: tabular-nums; /* stops numbers jiggling as they change */
+}
+
+.squash-btn {
+  margin-left: auto;
+  padding: 0.5rem 1.1rem;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ff4f8b, #b05cff, #4d8bff);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.squash-btn:hover {
+  filter: brightness(1.1);
+}
+
+/* The play area: a faint grid inside a rainbow border.
+   Same outline trick as style.css: grid and white on the inside,
+   rainbow showing through the transparent border. */
+.squash-arena {
+  position: relative;
+  height: 360px;
+  overflow: hidden;
+  border: 3px solid transparent;
+  border-radius: 20px;
+  background:
+    linear-gradient(#fbe3f2 1px, transparent 1px) 0 0 / 24px 24px padding-box,
+    linear-gradient(90deg, #fbe3f2 1px, transparent 1px) 0 0 / 24px 24px padding-box,
+    linear-gradient(#fff, #fff) padding-box,
+    var(--rainbow) border-box;
+  cursor: crosshair;
+  touch-action: manipulation; /* no double-tap zoom on phones */
+  user-select: none;
+}
+
+/* "Ready?" and "Time's up" screen that covers the play area. */
+.squash-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 1.5rem;
+  text-align: center;
+  background: rgba(255, 245, 251, 0.93);
+  z-index: 3;
+}
+
+.squash-overlay[hidden] {
+  display: none;
+}
+
+.squash-overlay .big {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* The unicorn you click. It moves by changing `transform`,
+   and the transition makes it glide instead of teleport. */
+.squash-bug {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background: none;
+  font-size: 40px;
+  line-height: 48px;
+  cursor: pointer;
+  transition-property: transform;
+  transition-timing-function: ease-in-out;
+  z-index: 2;
+}
+
+/* Golden unicorn (worth 3): recolour the emoji gold and add a glow. */
+.squash-bug.golden span {
+  display: inline-block;
+  filter: sepia(1) saturate(5) hue-rotate(-12deg) drop-shadow(0 0 8px rgba(255, 196, 0, 0.9));
+}
+
+/* Speech bubble for the roasts and hype lines. */
+.squash-bubble {
+  position: absolute;
+  z-index: 4;
+  max-width: 230px;
+  padding: 0.4rem 0.75rem;
+  border: 2px solid var(--lilac);
+  border-radius: 16px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.3;
+  pointer-events: none; /* so it never blocks a click */
+  animation: bubble-life 1600ms ease-out forwards;
+}
+
+/* Catches get a rainbow outline. */
+.squash-bubble.hit {
+  border-color: transparent;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    var(--rainbow) border-box;
+}
+
+/* Misses get a purple roast. */
+.squash-bubble.miss {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@keyframes bubble-life {
+  0% { opacity: 0; transform: translateY(6px) scale(0.9); }
+  12% { opacity: 1; transform: none; }
+  80% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-6px); }
+}
+
+/* Hidden on screen but read aloud by screen readers. */
+.squash-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* The "+1" / "+3" that floats up where you caught a unicorn. */
+.squash-splat {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  font-weight: 700;
+  color: var(--pink);
+  animation: squash-pop 700ms ease-out forwards;
+}
+
+.squash-splat::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 46px;
+  height: 46px;
+  margin: -23px 0 0 -23px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 111, 181, 0.35) 0 40%, transparent 70%);
+  z-index: -1;
+}
+
+@keyframes squash-pop {
+  from { opacity: 1; transform: translateY(0) scale(1); }
+  to { opacity: 0; transform: translateY(-28px) scale(1.3); }
+}
+
+/* Respect people who turn off animations in their computer settings. */
+@media (prefers-reduced-motion: reduce) {
+  .squash-bug { transition: none !important; }
+  .squash-splat, .squash-bubble { animation-duration: 1ms; }
+}

@@ -1,36 +1,111 @@
+/* ==========================================================================
+   Abby's Practice Round: page styles
+   Colours, fonts, and the sparkly background. Game styles live in
+   bug-squash.css so the two can change independently.
+   ========================================================================== */
+
+/* Colour palette, defined once and reused everywhere below. */
 :root {
   color-scheme: light;
-  font-family: "Avenir Next", "Segoe UI", sans-serif;
-  line-height: 1.5;
-  --ink: #12202e;
-  --muted: #4a5d70;
-  --paper: #f4f7fb;
-  --accent: #0b6e4f;
+  font-family: "Nunito", "Segoe UI", sans-serif;
+  line-height: 1.55;
+  --ink: #3b1a4a;      /* main text */
+  --muted: #7a5a8c;    /* softer supporting text */
+  --paper: #fff5fb;    /* page background */
+  --accent: #9b4dca;   /* purple highlight */
+  --pink: #ff6fb5;     /* pink highlight */
+  --lilac: #e9d5ff;    /* light borders */
+  --rainbow: linear-gradient(90deg, #ff5f8f, #ff9f43, #ffd43b, #51cf66, #4dabf7, #845ef7, #f06595);
 }
 
 * {
   box-sizing: border-box;
 }
 
+/* Soft pink and lilac glows layered over the page colour. */
 body {
   margin: 0;
   min-height: 100vh;
   background:
-    radial-gradient(circle at top left, #d7ebe3 0%, transparent 40%),
-    linear-gradient(160deg, #eef3f8, var(--paper));
+    radial-gradient(circle at 10% 0%, #ffd6ec 0%, transparent 45%),
+    radial-gradient(circle at 95% 20%, #e3d0ff 0%, transparent 40%),
+    radial-gradient(circle at 15% 70%, #d3f9d8 0%, transparent 35%),
+    radial-gradient(circle at 85% 85%, #fff3bf 0%, transparent 35%),
+    radial-gradient(circle at 50% 110%, #ffe0f3 0%, transparent 50%),
+    var(--paper);
   color: var(--ink);
+  overflow-x: hidden;
 }
 
+/* Rainbow stripe pinned to the very top of the window. */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--rainbow);
+  z-index: 10;
+}
+
+/* Centred content column. */
 .page {
-  max-width: 40rem;
+  position: relative;
+  max-width: 42rem;
   margin: 0 auto;
-  padding: 4rem 1.5rem;
+  padding: 3.5rem 1.5rem 4rem;
+}
+
+/* Rainbow outline trick used on pills and cards:
+   a white fill on the inside, the rainbow showing through a transparent border. */
+.tagline,
+.hint {
+  border: 2px solid transparent;
+  background:
+    linear-gradient(#fff, #fff) padding-box,
+    var(--rainbow) border-box;
+}
+
+/* "Unicorns don't push to main" pill above the title. */
+.tagline {
+  display: inline-block;
+  margin: 0 0 0.9rem;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 
 h1 {
   margin: 0 0 1rem;
-  font-size: clamp(2rem, 5vw, 3rem);
-  letter-spacing: -0.03em;
+  font-family: "Fredoka", "Nunito", sans-serif;
+  font-size: clamp(2.4rem, 6vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* Rainbow text that slowly slides across the title. */
+h1 .shine,
+.squash h2 {
+  background: linear-gradient(90deg, #ff4f8b, #ff8a3d, #e6b800, #2fb344, #1c8fe0, #7048e8, #d6336c, #ff4f8b);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 8s linear infinite;
+}
+
+/* The unicorn next to the title gently bobs. */
+h1 .unicorn {
+  display: inline-block;
+  animation: bob 2.4s ease-in-out infinite;
+}
+
+h2 {
+  font-family: "Fredoka", "Nunito", sans-serif;
 }
 
 .lede {
@@ -39,14 +114,59 @@ h1 {
   color: var(--muted);
 }
 
+/* "After you merge a pull request..." note. */
 .hint {
   margin: 0;
-  padding: 1rem 1.1rem;
-  border-left: 4px solid var(--accent);
-  background: rgba(255, 255, 255, 0.7);
+  padding: 1rem 1.2rem;
+  border-radius: 16px;
 }
 
 code {
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.95em;
+  padding: 0.05em 0.35em;
+  border-radius: 6px;
+  background: #f6e8ff;
+  color: var(--accent);
+}
+
+/* Twinkling stars in the page margins, one rainbow colour each. */
+.sparkles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.sparkles span {
+  position: absolute;
+  font-size: 1.2rem;
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.sparkles span:nth-child(7n + 1) { color: #ff5f8f; }
+.sparkles span:nth-child(7n + 2) { color: #ff9f43; }
+.sparkles span:nth-child(7n + 3) { color: #fcc419; }
+.sparkles span:nth-child(7n + 4) { color: #51cf66; }
+.sparkles span:nth-child(7n + 5) { color: #4dabf7; }
+.sparkles span:nth-child(7n + 6) { color: #845ef7; }
+.sparkles span:nth-child(7n + 7) { color: #f06595; }
+
+@keyframes shimmer {
+  to { background-position: 300% 0; }
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-6px) rotate(4deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.7); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* Respect people who turn off animations in their computer settings. */
+@media (prefers-reduced-motion: reduce) {
+  h1 .shine, .squash h2, h1 .unicorn, .sparkles span { animation: none; }
 }

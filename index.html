@@ -3,19 +3,60 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Partner Git Practice</title>
+    <title>Abby's Practice Round</title>
+    <!-- Fonts: Fredoka for headings, Nunito for body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;700&family=Nunito:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
+    <!-- Decorative twinkling stars in the page margins (hidden from screen readers) -->
+    <div class="sparkles" aria-hidden="true">
+      <span style="top: 8%; left: 6%">✦</span>
+      <span style="top: 14%; left: 88%; animation-delay: 0.6s">✦</span>
+      <span style="top: 38%; left: 3%; animation-delay: 1.2s">✧</span>
+      <span style="top: 52%; left: 94%; animation-delay: 0.3s">✦</span>
+      <span style="top: 72%; left: 8%; animation-delay: 1.8s">✧</span>
+      <span style="top: 86%; left: 90%; animation-delay: 0.9s">✦</span>
+      <span style="top: 28%; left: 96%; animation-delay: 2.1s">✧</span>
+    </div>
     <main class="page">
+      <p class="tagline">Unicorns don't push to main</p>
       <!-- Workshop: Claude Code should change this headline to include your first name -->
-      <h1 id="headline">Welcome to Partner Practice, Abby</h1>
+      <h1 id="headline"><span class="shine">Abby's Practice Round</span> <span class="unicorn" aria-hidden="true">🦄</span></h1>
       <p class="lede">
-        This tiny site is for learning Git, GitHub, Node, Vercel, and Claude Code.
+        A tiny, very sparkly site for learning Git, GitHub, Node, Vercel, and Claude Code.
+        No production systems were harmed in the making of this page.
       </p>
       <p class="hint">
         After you merge a pull request into <code>main</code>, Vercel updates the live site.
       </p>
+
+      <!-- Catch the unicorn game. Behaviour: src/bug-squash.js · Styles: src/bug-squash.css -->
+      <section class="squash" aria-labelledby="squash-title">
+        <h2 id="squash-title">Catch the unicorn</h2>
+        <p class="squash-sub">30 seconds. Catch as many runaway unicorns as you can before they reach production.</p>
+        <!-- Score, countdown, best score, and the Start button -->
+        <div class="squash-hud">
+          <span>Score <strong id="sq-score">0</strong></span>
+          <span>Time <strong id="sq-time">30.0</strong></span>
+          <span>Best <strong id="sq-best">0</strong></span>
+          <button id="sq-start" class="squash-btn" type="button">Start</button>
+        </div>
+        <!-- Play area: the unicorn runs around in here -->
+        <div id="sq-arena" class="squash-arena">
+          <div id="sq-overlay" class="squash-overlay">
+            <div class="big">Ready?</div>
+            <div>Unicorns get faster the more you catch. Golden unicorns are worth 3.</div>
+          </div>
+          <button id="sq-bug" class="squash-bug" type="button" aria-label="Unicorn, catch it" hidden>
+            <span aria-hidden="true">🦄</span>
+          </button>
+        </div>
+        <!-- Invisible copy of each game message so screen readers announce it -->
+        <p id="sq-log" class="squash-sr" aria-live="polite"></p>
+      </section>
     </main>
     <script type="module" src="/src/main.js"></script>
   </body>
